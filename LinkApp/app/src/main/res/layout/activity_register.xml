@@ -6,38 +6,28 @@
     android:layout_height="match_parent"
     android:background="@color/Navy"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:text="Welcome Back"
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_message"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Sign into your account to link up and keep messaging"
+        android:text="Enter your details to link up and start messaging"
         android:textAlignment="center"
         android:textColor="@color/Light_blue"
         android:textSize="18dp"
@@ -47,12 +37,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <!-- NAME -->
-
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="20dp"
@@ -61,8 +49,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.284" />
 
     <EditText
         android:id="@+id/et_name"
@@ -94,7 +82,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="@+id/et_password"
         app:layout_constraintTop_toBottomOf="@+id/et_name"
         app:layout_constraintVertical_bias="0.0" />
@@ -116,9 +104,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_password" />
 
-    <!-- LOGIN BUTTON -->
+    <!-- CONFIRM PASSWORD -->
+    <TextView
+        android:id="@+id/tv_password_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Confirm Password"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/et_password_confirm"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_text"
+        android:hint="Confirm password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/Light_blue"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_password_confirm" />
+
+    <!-- SIGN UP BUTTON -->
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_register"
         android:layout_width="200dp"
         android:layout_height="55dp"
         android:layout_marginTop="20dp"
@@ -130,14 +152,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password"
+        app:layout_constraintTop_toBottomOf="@+id/et_password_confirm"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Don't have an account? Sign up"
+        android:text="Already have an account? Sign in"
         android:textAlignment="center"
         android:textColor="@color/Light_blue"
         android:textSize="15dp"
@@ -145,7 +167,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register"
         app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

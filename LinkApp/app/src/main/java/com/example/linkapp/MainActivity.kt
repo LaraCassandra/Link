@@ -18,5 +18,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        // SIGN UP BUTTON CLICK
+        val btn_register = findViewById<Button>(R.id.btn_register)
+        btn_register.setOnClickListener {
+            // DIRECT TO REGISTER PAGE
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
