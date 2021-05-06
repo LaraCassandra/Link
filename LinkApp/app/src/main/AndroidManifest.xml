@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LinkApp">
         <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme"/>
+        <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme">
