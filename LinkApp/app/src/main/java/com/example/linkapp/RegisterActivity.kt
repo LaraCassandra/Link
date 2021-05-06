@@ -3,6 +3,7 @@ package com.example.linkapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 
 class RegisterActivity : AppCompatActivity() {
@@ -15,6 +16,13 @@ class RegisterActivity : AppCompatActivity() {
         tv_login.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+        }
+
+        val register_btn = findViewById<Button>(R.id.btn_register)
+        register_btn.setOnClickListener {
+            val intent = Intent(this, OnboardingActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
