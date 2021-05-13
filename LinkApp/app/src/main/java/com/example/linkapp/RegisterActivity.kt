@@ -71,16 +71,16 @@ class RegisterActivity : BaseActivity() {
         register_btn.setOnClickListener {
             registerUser()
         }
+    }
 
-        fun userRegisteredSuccess(uid: String){
-            showErrorSnackBar("Success on register", false)
+    fun userRegisteredSuccess(uid: String) {
+        showErrorSnackBar("Success on register", false)
 
-            // NAVIGATION
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra(Constants.LOGGED_IN_ID, uid)
-            startActivity(intent)
-            finish()
-        }
+        // NAVIGATION
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.putExtra(Constants.LOGGED_IN_ID, uid)
+        startActivity(intent)
+        finish()
 
     }
 }
