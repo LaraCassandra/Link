@@ -180,7 +180,6 @@
         android:layout_width="200dp"
         android:layout_height="55dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="100dp"
         android:backgroundTint="@color/Blue"
         android:text="Login"
         android:textStyle="bold"
@@ -189,7 +188,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password_confirm"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_login"
