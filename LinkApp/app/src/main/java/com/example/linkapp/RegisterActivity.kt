@@ -44,6 +44,11 @@ class RegisterActivity : BaseActivity() {
                                 if (task.isSuccessful){
                                     val firebaseUser: FirebaseUser = task.result!!.user!!
                                     showErrorSnackBar("Successfully register user", false)
+
+                                    // NAVIGATION
+                                    val intent = Intent(this, LoginActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
                                 }
                                 else {
                                     showErrorSnackBar(task.exception!!.message.toString(), true)

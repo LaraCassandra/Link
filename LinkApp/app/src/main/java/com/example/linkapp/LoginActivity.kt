@@ -38,6 +38,11 @@ class LoginActivity : BaseActivity() {
                     .addOnCompleteListener{ task ->
                         if (task.isSuccessful){
                             val firebaseUser: FirebaseUser = task.result!!.user!!
+
+                            // NAVIGATION
+                            val intent = Intent(this, ChatsActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }
                         else {
                             showErrorSnackBar(task.exception!!.message.toString(), true)
@@ -47,6 +52,7 @@ class LoginActivity : BaseActivity() {
 
         }
 
+        // LOGIN BUTTON ON CLICK
         val login_btn = findViewById<Button>(R.id.btn_login)
         login_btn.setOnClickListener {
             loginUser()
