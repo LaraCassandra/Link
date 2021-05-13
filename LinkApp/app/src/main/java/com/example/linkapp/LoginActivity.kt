@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.example.linkapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -39,10 +40,7 @@ class LoginActivity : BaseActivity() {
                         if (task.isSuccessful){
                             val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                            // NAVIGATION
-                            val intent = Intent(this, ChatsActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            loginUserSuccess(firebaseUser.uid)
                         }
                         else {
                             showErrorSnackBar(task.exception!!.message.toString(), true)
@@ -58,5 +56,14 @@ class LoginActivity : BaseActivity() {
             loginUser()
         }
 
+    }
+
+    fun loginUserSuccess(uid: String){
+
+        // NAVIGATION
+        val intent = Intent(this, ChatsActivity::class.java)
+        intent.putExtra(Constants.LOGGED_IN_ID, uid)
+        startActivity(intent)
+        finish()
     }
 }
