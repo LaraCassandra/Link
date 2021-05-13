@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class RegisterActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +39,15 @@ class RegisterActivity : BaseActivity() {
                 //TODO: firebase register function
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(
-                        
+                            OnCompleteListener<AuthResult>{ task ->
+                                if (task.isSuccessful){
+                                    val firebaseUser: FirebaseUser = task.result!!.user!!
+                                    showErrorSnackBar("Successfully register user", false)
+                                }
+                                else {
+                                    showErrorSnackBar(task.exception!!.message.toString(), true)
+                                }
+                            }
                     )
             }
         }
