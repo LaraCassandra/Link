@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.example.linkapp.model.User
+import com.example.linkapp.utils.Constants
+import com.example.linkapp.utils.Firestore
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -43,12 +46,17 @@ class RegisterActivity : BaseActivity() {
                             OnCompleteListener<AuthResult>{ task ->
                                 if (task.isSuccessful){
                                     val firebaseUser: FirebaseUser = task.result!!.user!!
-                                    showErrorSnackBar("Successfully register user", false)
+                                    //showErrorSnackBar("Successfully register user", false)
 
-                                    // NAVIGATION
-                                    val intent = Intent(this, LoginActivity::class.java)
-                                    startActivity(intent)
-                                    finish()
+                                    // CREATE USER DATA
+                                    val user = User(
+                                        firebaseUser.uid,
+                                        name,
+                                        email
+                                    )
+
+                                    // ADD TO FIRESTORE
+                                    Firestore().registerUser(this, user)
                                 }
                                 else {
                                     showErrorSnackBar(task.exception!!.message.toString(), true)
@@ -62,6 +70,16 @@ class RegisterActivity : BaseActivity() {
         val register_btn = findViewById<Button>(R.id.btn_register)
         register_btn.setOnClickListener {
             registerUser()
+        }
+
+        fun userRegisteredSuccess(uid: String){
+            showErrorSnackBar("Success on register", false)
+
+            // NAVIGATION
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra(Constants.LOGGED_IN_ID, uid)
+            startActivity(intent)
+            finish()
         }
 
     }
