@@ -24,6 +24,7 @@ class RegisterActivity : BaseActivity() {
         }
 
 
+        // REGISTER USER FUNCTION
         fun registerUser(){
 
             // VARIABLES
@@ -36,7 +37,6 @@ class RegisterActivity : BaseActivity() {
                 showErrorSnackBar("Please enter your email and password", true);
             }
             else {
-                //TODO: firebase register function
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(
                             OnCompleteListener<AuthResult>{ task ->
@@ -52,17 +52,11 @@ class RegisterActivity : BaseActivity() {
             }
         }
 
+        // ON REGISTER BUTTON CLICK
         val register_btn = findViewById<Button>(R.id.btn_register)
         register_btn.setOnClickListener {
             registerUser()
         }
-
-//        val register_btn = findViewById<Button>(R.id.btn_register)
-//        register_btn.setOnClickListener {
-//            val intent = Intent(this, OnboardingActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
 
     }
 }

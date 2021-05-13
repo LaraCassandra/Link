@@ -3,7 +3,10 @@ package com.example.linkapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +20,29 @@ class LoginActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        // LOGIN USER FUNCTION
+        fun loginUser(){
 
+            // VARIABLES
+            val email: String = findViewById<EditText>(R.id.et_email).text.toString().trim{ it <= ' '}
+            val password: String = findViewById<EditText>(R.id.et_password).text.toString().trim{ it <= ' '}
+
+            if (email == "" || password == ""){
+                showErrorSnackBar("Please enter your details", true)
+            }
+            else {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener{ task ->
+                        if (task.isSuccessful){
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
+                        }
+                        else {
+                            showErrorSnackBar(task.exception!!.message.toString(), true)
+                        }
+                    }
+            }
+
+        }
 
     }
 }
