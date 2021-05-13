@@ -37,6 +37,7 @@ class RegisterActivity : BaseActivity() {
                 showErrorSnackBar("Please enter your email and password", true);
             }
             else {
+                // REGISTER WITH FIREBASE
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(
                             OnCompleteListener<AuthResult>{ task ->

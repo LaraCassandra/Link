@@ -3,6 +3,7 @@ package com.example.linkapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
@@ -27,10 +28,12 @@ class LoginActivity : BaseActivity() {
             val email: String = findViewById<EditText>(R.id.et_email).text.toString().trim{ it <= ' '}
             val password: String = findViewById<EditText>(R.id.et_password).text.toString().trim{ it <= ' '}
 
+            // VALIDATION
             if (email == "" || password == ""){
                 showErrorSnackBar("Please enter your details", true)
             }
             else {
+                // LOGIN USING FIREBASE
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener{ task ->
                         if (task.isSuccessful){
@@ -42,6 +45,11 @@ class LoginActivity : BaseActivity() {
                     }
             }
 
+        }
+
+        val login_btn = findViewById<Button>(R.id.btn_login)
+        login_btn.setOnClickListener {
+            loginUser()
         }
 
     }
