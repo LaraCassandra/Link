@@ -24,15 +24,15 @@ class OnboardingActivity : AppCompatActivity() {
             commit()
         }
 
-//        //APPLY SECOND ONBOARDING SCREEN TO FRAME
-//        val firstNext = findViewById<Button>(R.id.btn_first_next)
-//        firstNext.setOnClickListener {
-//            supportFragmentManager.beginTransaction().apply {
-//                replace(R.id.fl_fragment, onboardingTwoFragment)
-//                addToBackStack(null)
-//                commit()
-//            }
-//        }
+        //APPLY SECOND ONBOARDING SCREEN TO FRAME
+        val firstNext = findViewById<Button>(R.id.btn_first_next)
+        firstNext.setOnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fl_fragment, onboardingTwoFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
 //
 //        //APPLY THIRD ONBOARDING SCREEN TO FRAME
 //        val secondNext = findViewById<Button>(R.id.btn_second_next)
