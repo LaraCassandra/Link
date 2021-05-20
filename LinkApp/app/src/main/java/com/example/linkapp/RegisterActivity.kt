@@ -73,7 +73,7 @@ class RegisterActivity : BaseActivity() {
         showErrorSnackBar("Success on register", false)
 
         // NAVIGATION
-        val intent = Intent(this, ChatsActivity::class.java)
+        val intent = Intent(this, OnboardingActivity::class.java)
         intent.putExtra(Constants.LOGGED_IN_ID, uid)
         startActivity(intent)
         finish()
