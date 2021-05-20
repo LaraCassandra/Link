@@ -1,7 +1,6 @@
 package com.example.linkapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -36,10 +35,10 @@ class LoginActivity : BaseActivity() {
             else {
                 // LOGIN USING FIREBASE
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener{ task ->
+                    .addOnCompleteListener { task ->
                         if (task.isSuccessful){
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-
+                            showErrorSnackBar("Successful", false)
                             loginUserSuccess(firebaseUser.uid)
                         }
                         else {
@@ -51,19 +50,20 @@ class LoginActivity : BaseActivity() {
         }
 
         // LOGIN BUTTON ON CLICK
-        val login_btn = findViewById<Button>(R.id.btn_login)
-        login_btn.setOnClickListener {
+        val btn_login = findViewById<Button>(R.id.btn_login1)
+        btn_login.setOnClickListener {
             loginUser()
         }
 
     }
 
-    fun loginUserSuccess(uid: String){
+    private fun loginUserSuccess(uid: String){
 
         // NAVIGATION
-        val intent = Intent(this, ChatsActivity::class.java)
-        intent.putExtra(Constants.LOGGED_IN_ID, uid)
-        startActivity(intent)
-        finish()
+            val intent = Intent(this, ChatsActivity::class.java)
+            intent.putExtra(Constants.LOGGED_IN_ID, uid)
+            startActivity(intent)
+            finish()
+
     }
 }

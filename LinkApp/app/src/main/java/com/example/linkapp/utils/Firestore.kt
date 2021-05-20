@@ -35,7 +35,6 @@ class Firestore {
             .addOnSuccessListener { document ->
                 if(document != null){
                     val user = document.toObject(User::class.java)!!
-                    activity.setUserInfo(user)
                 }
                 else {
                     Toast.makeText(activity, "The user info is empty", Toast.LENGTH_SHORT).show()

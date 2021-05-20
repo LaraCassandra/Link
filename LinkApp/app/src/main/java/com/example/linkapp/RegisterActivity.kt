@@ -1,7 +1,6 @@
 package com.example.linkapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,8 +8,6 @@ import android.widget.TextView
 import com.example.linkapp.model.User
 import com.example.linkapp.utils.Constants
 import com.example.linkapp.utils.Firestore
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -37,13 +34,12 @@ class RegisterActivity : BaseActivity() {
 
             // VALIDATION
             if(email == "" || password == ""){
-                showErrorSnackBar("Please enter your email and password", true);
+                showErrorSnackBar("Please enter your email and password", true)
             }
             else {
                 // REGISTER WITH FIREBASE
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(
-                            OnCompleteListener<AuthResult>{ task ->
+                    .addOnCompleteListener{ task ->
                                 if (task.isSuccessful){
                                     val firebaseUser: FirebaseUser = task.result!!.user!!
                                     //showErrorSnackBar("Successfully register user", false)
@@ -62,7 +58,7 @@ class RegisterActivity : BaseActivity() {
                                     showErrorSnackBar(task.exception!!.message.toString(), true)
                                 }
                             }
-                    )
+
             }
         }
 
@@ -77,7 +73,7 @@ class RegisterActivity : BaseActivity() {
         showErrorSnackBar("Success on register", false)
 
         // NAVIGATION
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, ChatsActivity::class.java)
         intent.putExtra(Constants.LOGGED_IN_ID, uid)
         startActivity(intent)
         finish()
