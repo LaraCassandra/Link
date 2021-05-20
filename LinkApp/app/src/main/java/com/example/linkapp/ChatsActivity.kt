@@ -3,22 +3,28 @@ package com.example.linkapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import android.view.MenuItem
+import android.widget.ImageButton
 import com.example.linkapp.fragments.ChatsFragment
 import com.example.linkapp.fragments.ContactsFragment
 import com.example.linkapp.fragments.ProfileFragment
 import com.example.linkapp.utils.Constants
 import com.example.linkapp.utils.Firestore
+import com.google.firebase.auth.FirebaseAuth
 
 class ChatsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chats)
+        // SETUP TOOLBAR
+        setSupportActionBar((findViewById(R.id.tb_toolbar)))
 
         // REFERENCE TO FRAGMENTS
         val chatsFragment = ChatsFragment()
         val contactsFragment = ContactsFragment()
         val profileFragment = ProfileFragment()
+
 
         //SET DEFAULT FRAGMENT
         //APPLY FRAGMENT TO FRAME
@@ -28,8 +34,8 @@ class ChatsActivity : AppCompatActivity() {
         }
 
         // ON PROFILE CLICK
-        val tv_profile = findViewById<TextView>(R.id.tv_profile)
-        tv_profile.setOnClickListener {
+        val ib_profile = findViewById<ImageButton>(R.id.ib_profile)
+        ib_profile.setOnClickListener {
             //APPLY PROFILE FRAGMENT TO FRAME
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fl_fragment, profileFragment)
@@ -39,8 +45,8 @@ class ChatsActivity : AppCompatActivity() {
         }
 //
         // ON CONTACTS CLICK
-        val tv_contacts = findViewById<TextView>(R.id.tv_contacts)
-        tv_contacts.setOnClickListener {
+        val ib_contacts = findViewById<ImageButton>(R.id.ib_contacts)
+        ib_contacts.setOnClickListener {
             //APPLY CONTACTS FRAGMENT TO FRAME
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fl_fragment, contactsFragment)
@@ -50,8 +56,8 @@ class ChatsActivity : AppCompatActivity() {
         }
 
         // ON CHATS CLICK
-        val tv_chat = findViewById<TextView>(R.id.tv_chats)
-        tv_chat.setOnClickListener {
+        val ib_chats = findViewById<ImageButton>(R.id.ib_chats)
+        ib_chats.setOnClickListener {
             //APPLY CHATS FRAGMENT TO FRAME
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fl_fragment, chatsFragment)
@@ -73,5 +79,14 @@ class ChatsActivity : AppCompatActivity() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_settings -> {
+                FirebaseAuth.getInstance().signOut()
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }

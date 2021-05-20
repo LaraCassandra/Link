@@ -17,8 +17,7 @@
         <activity
             android:name=".ChatsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.LinkApp"
-            android:label="Link"/>
+            android:theme="@style/NoActionBarTheme" />
         <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait"
