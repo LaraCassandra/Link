@@ -20,7 +20,7 @@ class ChatsActivity : AppCompatActivity() {
         val contactsFragment = ContactsFragment()
         val profileFragment = ProfileFragment()
 
-        //SET THE DEFAULT FRAGMENT
+        //SET DEFAULT FRAGMENT
         //APPLY FRAGMENT TO FRAME
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl_fragment, chatsFragment)

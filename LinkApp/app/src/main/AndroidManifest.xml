@@ -13,7 +13,7 @@
         <activity
             android:name=".OnboardingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarTheme" />
+            android:theme="@style/OnboardingTheme" />
         <activity
             android:name=".ChatsActivity"
             android:screenOrientation="portrait"

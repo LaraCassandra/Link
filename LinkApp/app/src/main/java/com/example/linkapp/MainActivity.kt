@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
             // DIRECT TO LOGIN PAGE
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         // SIGN UP BUTTON CLICK
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             // DIRECT TO REGISTER PAGE
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

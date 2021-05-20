@@ -27,4 +27,19 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>
+
+    <!-- NO ACTION BAR -->
+    <style name="OnboardingTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/Navy</item>
+        <item name="colorPrimaryVariant">@color/Blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorAccent">@color/Red</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/Light_blue</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/Blue</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
 </resources>
