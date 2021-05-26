@@ -1,4 +1,4 @@
-package com.example.linkapp.Adapters
+package com.example.linkapp.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +19,7 @@ class ContactAdapter(
             // DEFINE ELEMENTS THAT WE INTERACT WITH IN THE ITEM_CONTACT.XML
             val nameView: TextView = itemView.tv_name
             val emailView: TextView = itemView.tv_email
+
         }
 
     // INFLATE LISTVIEWHOLDER (EACH ITEM) TO RECYCLERVIEW CONTAINER
