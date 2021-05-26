@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.example.linkapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +55,7 @@ class LoginActivity : BaseActivity() {
         btn_login.setOnClickListener {
             loginUser()
         }
+
 
     }
 

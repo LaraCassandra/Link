@@ -4,6 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.linkapp.Adapters.ContactAdapter
+import com.example.linkapp.model.ContactItem
+import kotlinx.android.synthetic.main.fragment_contacts.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,5 +31,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        //  TODO: FIX CONTACTS DISPLAY
+//        val contactList = mutableListOf(
+//            ContactItem(1, "John Doe", "johndoe@gmail.com"),
+//            ContactItem(2, "Hannah Smith", "hannahsmith@gmail.com"),
+//        )
+//
+//        rv_container.adapter = ContactAdapter(contactList, this)
+//        rv_container.layoutManager = LinearLayoutManager(this)
+//        rv_container.setHasFixedSize(true)
+
     }
 }
