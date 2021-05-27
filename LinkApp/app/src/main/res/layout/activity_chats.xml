@@ -12,7 +12,6 @@
         android:layout_height="?attr/actionBarSize"
         app:menu="@menu/menu"
         android:background="@color/Navy"
-        android:elevation="4dp"
         android:padding="5dp"
         android:theme="@style/NoActionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
