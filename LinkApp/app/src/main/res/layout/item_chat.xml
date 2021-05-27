@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/item_chat"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/edit_text"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tv_contactName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact Name"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_messagePreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Message preview"
+        android:textColor="@color/Light_blue"
+        android:textSize="12dp"/>
+
+</LinearLayout>
