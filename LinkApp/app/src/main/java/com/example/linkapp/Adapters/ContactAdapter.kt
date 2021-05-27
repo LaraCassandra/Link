@@ -7,10 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.linkapp.R
 import com.example.linkapp.model.ContactItem
+import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.android.synthetic.main.item_contact.view.*
 
 class ContactAdapter(
-    private val itemList: List<ContactItem>,
+    private val itemList: List<DocumentSnapshot>,
     private val activity: RecyclerView
         ) : RecyclerView.Adapter<ContactAdapter.ListViewHolder>() {
 
@@ -33,8 +34,8 @@ class ContactAdapter(
         val currentItem = itemList[position]
 
         // SET THE TEXT OF THE ITEM
-        holder.nameView.text = currentItem.name
-        holder.emailView.text = currentItem.email
+        holder.nameView.text = currentItem.id
+        //holder.emailView.text = currentItem.email
     }
 
     // RETURN HOW MANY ITEMS ARE IN THE LIST

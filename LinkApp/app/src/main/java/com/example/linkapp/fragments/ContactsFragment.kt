@@ -1,6 +1,7 @@
 package com.example.linkapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.linkapp.Adapters.ContactAdapter
 import com.example.linkapp.R
 import com.example.linkapp.model.ContactItem
+import com.example.linkapp.model.User
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_contacts.*
 
 class ContactsFragment : Fragment(){
@@ -26,13 +31,19 @@ class ContactsFragment : Fragment(){
         rv_container.apply {
             layoutManager = LinearLayoutManager(activity)
 
-            val contactList = mutableListOf(
-                ContactItem(1, "John Doe", "johndoe@gmail.com"),
-                ContactItem(2, "Hansen Li", "hansenli@gmail.com")
-            )
+            val db = FirebaseFirestore.getInstance()
+            val contactLit = db.collection("users").get()
+                .addOnSuccessListener { document ->
+                    if(document != null){
 
-            adapter = ContactAdapter(contactList, this)
-            setHasFixedSize(true)
+                        val contact = document.documents.toList()
+                        Log.w("This is the documents", "$contact")
+
+                        adapter = ContactAdapter(contact, this)
+                        setHasFixedSize(true)
+
+                    }
+                }
         }
 
     }

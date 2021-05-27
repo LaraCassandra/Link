@@ -5,9 +5,9 @@
     android:background="@color/Navy"
     android:orientation="vertical"
     android:paddingLeft="30dp"
-    android:paddingTop="15dp"
-    android:paddingRight="15dp"
-    android:paddingBottom="15dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
     android:layout_margin="10dp">
 
     <TextView
@@ -17,7 +17,7 @@
         android:layout_marginBottom="5dp"
         android:text="Contact Name"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         android:text="Contact email"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="12sp" />
 
 </LinearLayout>
