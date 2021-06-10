@@ -25,7 +25,7 @@ class ChatsActivity : BaseActivity() {
         setSupportActionBar((findViewById(R.id.tb_toolbar)))
 
         // REFERENCE TO FRAGMENTS
-//        val chatsFragment = ChatsFragment()
+        val chatsFragment = ChatsFragment()
         val contactsFragment = ContactsFragment()
         val profileFragment = ProfileFragment()
 
@@ -33,7 +33,7 @@ class ChatsActivity : BaseActivity() {
         //SET DEFAULT FRAGMENT
         //APPLY FRAGMENT TO FRAME
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fl_fragment, contactsFragment)
+            replace(R.id.fl_fragment, chatsFragment)
             commit()
         }
 
@@ -59,16 +59,16 @@ class ChatsActivity : BaseActivity() {
             }
         }
 
-//        // ON CHATS CLICK
-//        val ib_chats = findViewById<ImageButton>(R.id.ib_chats)
-//        ib_chats.setOnClickListener {
-//            //APPLY CHATS FRAGMENT TO FRAME
-//            supportFragmentManager.beginTransaction().apply {
-//                replace(R.id.fl_fragment, chatsFragment)
-//                addToBackStack(null)
-//                commit()
-//            }
-//        }
+        // ON CHATS CLICK
+        val ib_chats = findViewById<ImageButton>(R.id.ib_chats)
+        ib_chats.setOnClickListener {
+            //APPLY CHATS FRAGMENT TO FRAME
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fl_fragment, chatsFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
 
 //
 //        val uid = intent.getStringExtra(Constants.LOGGED_IN_ID)
