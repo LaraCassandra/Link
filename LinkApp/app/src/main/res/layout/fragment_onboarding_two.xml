@@ -24,7 +24,7 @@
         android:id="@+id/tv_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Link up"
+        android:text="Simple Profiles"
         android:textColor="@color/white"
         android:textSize="22dp"
         android:textStyle="bold"
@@ -40,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Link is a chat application that allows you to link up with your friends in a few easy steps"
+
+        android:text="When you sign up, your profile is ready to go and you can edit your details at any point"
         android:textColor="@color/Light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

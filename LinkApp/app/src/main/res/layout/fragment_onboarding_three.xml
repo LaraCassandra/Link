@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Link is a chat application that allows you to link up with your friends in a few easy steps"
+        android:text="Our minimalistic approach allows you to focus on linking up with your friends and sending messages."
         android:textColor="@color/Light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
