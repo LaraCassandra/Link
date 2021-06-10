@@ -52,7 +52,7 @@ class RegisterActivity : BaseActivity() {
                                     )
 
                                     // ADD TO FIRESTORE
-                                    Firestore().registerUser(this, user)
+                                    Firestore.registerUser(this, user)
                                 }
                                 else {
                                     showErrorSnackBar(task.exception!!.message.toString(), true)

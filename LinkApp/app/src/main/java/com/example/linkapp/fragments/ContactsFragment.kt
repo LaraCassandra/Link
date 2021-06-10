@@ -12,7 +12,7 @@ import com.example.linkapp.MessageActivity
 import com.example.linkapp.R
 import com.example.linkapp.model.ContactItem
 import com.example.linkapp.utils.Constants
-import com.example.linkapp.utils.FirestoreUtil
+import com.example.linkapp.utils.Firestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.OnItemClickListener
@@ -34,14 +34,14 @@ class ContactsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
 
-        userListnerRegistration = FirestoreUtil.addUserListener(this.activity!!, this::updateRecyclerView)
+        userListnerRegistration = Firestore.addUserListener(this.activity!!, this::updateRecyclerView)
 
         return inflater.inflate(R.layout.fragment_contacts, container, false)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        FirestoreUtil.removeListener(userListnerRegistration)
+        Firestore.removeListener(userListnerRegistration)
         shouldInitRecyclerView = true
     }
 

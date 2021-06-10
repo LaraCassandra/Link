@@ -71,15 +71,15 @@ class ChatsActivity : BaseActivity() {
         }
 
 //
-        val uid = intent.getStringExtra(Constants.LOGGED_IN_ID)
-
-        if(uid != null){
-            Firestore().getUserInfoById(this, uid)
-        }
-        else {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
+//        val uid = intent.getStringExtra(Constants.LOGGED_IN_ID)
+//
+//        if(uid != null){
+//            getUserInfoById(this, uid)
+//        }
+//        else {
+//            startActivity(Intent(this, LoginActivity::class.java))
+//            finish()
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

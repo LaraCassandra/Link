@@ -1,5 +1,6 @@
 package com.example.linkapp.utils
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
@@ -12,7 +13,11 @@ import com.google.firebase.firestore.*
 import com.xwray.groupie.kotlinandroidextensions.Item
 import java.lang.NullPointerException
 
-object FirestoreUtil {
+object Firestore {
+
+    // INITIATE FIRESTORE
+    @SuppressLint("StaticFieldLeak")
+    private val db = FirebaseFirestore.getInstance()
     private val firestoreInstance: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
 
     private val chatChannelCollectionRef = firestoreInstance.collection("chatChannels")
@@ -20,6 +25,47 @@ object FirestoreUtil {
     private val currentUserDocRef: DocumentReference
     get() = firestoreInstance.document("users/${FirebaseAuth.getInstance().currentUser?.uid
         ?: throw NullPointerException("UID is null")}")
+
+    // ADD USER TO FIREBASE WHEN THEY REGISTER
+    fun registerUser(activity: RegisterActivity, userInfo: User){
+
+        db.collection(Constants.USERS)
+            .document(userInfo.id)
+            .set(userInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.userRegisteredSuccess(userInfo.id)
+            }
+            .addOnFailureListener {
+                activity.showErrorSnackBar("Error while registering the user", true)
+            }
+    }
+
+    fun initCurrentUserIfFirstTime(onComplete: () -> Unit){
+        currentUserDocRef.get().addOnSuccessListener { documentSnapshot ->
+            if(!documentSnapshot.exists()){
+                val newUser = User("", FirebaseAuth.getInstance().currentUser?.displayName ?:
+                "","" )
+                currentUserDocRef.set(newUser).addOnSuccessListener {
+                    onComplete()
+                }
+            } else
+                onComplete()
+        }
+    }
+
+    fun getCurrentUser(onComplete: (User) -> Unit){
+        currentUserDocRef.get()
+            .addOnSuccessListener {
+                onComplete(it.toObject(User::class.java)!!)
+            }
+    }
+
+    fun updateCurrentUser(displayName: String = "", email: String = ""){
+        val userFieldMap = mutableMapOf<String, Any>()
+        if (displayName.isNotBlank()) userFieldMap["displayName"] = displayName
+        if (email.isNotBlank()) userFieldMap["email"] = email
+        currentUserDocRef.update(userFieldMap)
+    }
 
     fun addUserListener(context: Context, onListen: (List<Item>) -> Unit): ListenerRegistration {
         return firestoreInstance.collection("users")
@@ -45,18 +91,19 @@ object FirestoreUtil {
         currentUserDocRef.collection("engagedChatChannels")
             .document(otherUserId).get().addOnSuccessListener {
                 if(it.exists()){
-                    onComplete(it["channelID"] as String)
+                    onComplete(it["channelId"] as String)
                     return@addOnSuccessListener
                 }
 
                 val currentUserId = FirebaseAuth.getInstance().currentUser!!.uid
                 val newChannel = chatChannelCollectionRef.document()
-                newChannel.set(ChatChannel(mutableListOf(currentUserId, otherUserId)))
+                newChannel.set(mutableListOf(currentUserId, otherUserId))
 
                 currentUserDocRef
                     .collection("engagedChatChannels")
                     .document(otherUserId)
                     .set(mapOf("channelId" to newChannel.id))
+
                 firestoreInstance.collection("users").document(otherUserId)
                     .collection("engagedChatChannels")
                     .document(currentUserId)
@@ -65,8 +112,7 @@ object FirestoreUtil {
             }
     }
 
-    fun addChatMessagesListener(channelId: String,
-                                context: Context,
+    fun addChatMessagesListener(channelId: String, context: Context,
                                 onListen: (List<Item>) -> Unit): ListenerRegistration{
         return chatChannelCollectionRef.document(channelId).collection("messages")
             .orderBy("time")
@@ -76,58 +122,19 @@ object FirestoreUtil {
                     return@addSnapshotListener
                 }
                 val items = mutableListOf<Item>()
-                querySnapshot!!.documents.forEach {
-                    items.add(TextMessageItem(it.toObject(TextMessage::class.java), context))
+                querySnapshot?.documents?.forEach {
+                    if(it["type"] == MessageType.TEXT){
+                        items.add(TextMessageItem(it.toObject(TextMessage::class.java)!!, context))
+                    }
                     onListen(items)
                 }
             }
     }
 
-}
-
-class Firestore {
-
-    // INITIATE FIRESTORE
-    private val db = FirebaseFirestore.getInstance()
-
-    // ADD USER TO FIREBASE WHEN THEY REGISTER
-    fun registerUser(activity: RegisterActivity, userInfo: User){
-
-        db.collection(Constants.USERS)
-            .document(userInfo.id)
-            .set(userInfo, SetOptions.merge())
-            .addOnSuccessListener {
-                activity.userRegisteredSuccess(userInfo.id)
-            }
-            .addOnFailureListener {
-                activity.showErrorSnackBar("Error while registering the user", true)
-            }
+    fun sendMessage(message: Message, channelId: String){
+        chatChannelCollectionRef.document(channelId)
+            .collection("messages")
+            .add(message)
     }
-
-    fun getUserInfoById(activity: ChatsActivity, uid: String){
-        db.collection(Constants.USERS)
-            .document(uid)
-            .get()
-            .addOnSuccessListener { document ->
-                if(document != null){
-                    val user = document.toObject(User::class.java)!!
-                }
-                else {
-                    Toast.makeText(activity, "The user info is empty", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(activity, exception.message, Toast.LENGTH_LONG).show()
-                Log.d(TAG, "get dailed with ", exception)
-            }
-    }
-
-//    fun updateCurrentUser(name: String = "", email: String = ""){
-//        val userFieldMap = mutableMapOf<String, Any>()
-//        if (name.isNotBlank()) userFieldMap["name"] = name
-//        if (email.isNotBlank()) userFieldMap["email"] = email
-//        currentUserDocReference.update(userFieldMap)
-//    }
-
 
 }
