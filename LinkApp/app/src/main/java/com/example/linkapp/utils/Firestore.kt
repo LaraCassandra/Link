@@ -97,7 +97,7 @@ object Firestore {
 
                 val currentUserId = FirebaseAuth.getInstance().currentUser!!.uid
                 val newChannel = chatChannelCollectionRef.document()
-                newChannel.set(mutableListOf(currentUserId, otherUserId))
+                newChannel.set(ChatChannel(mutableListOf(currentUserId, otherUserId)))
 
                 currentUserDocRef
                     .collection("engagedChatChannels")
@@ -108,6 +108,7 @@ object Firestore {
                     .collection("engagedChatChannels")
                     .document(currentUserId)
                     .set(mapOf("channelId" to newChannel.id))
+
                 onComplete(newChannel.id)
             }
     }
