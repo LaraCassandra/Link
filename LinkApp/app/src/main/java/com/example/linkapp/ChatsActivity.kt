@@ -14,6 +14,8 @@ import com.example.linkapp.utils.Constants
 import com.example.linkapp.utils.Firestore
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_chats.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ChatsActivity : BaseActivity() {
@@ -25,7 +27,6 @@ class ChatsActivity : BaseActivity() {
         setSupportActionBar((findViewById(R.id.tb_toolbar)))
 
         // REFERENCE TO FRAGMENTS
-        val chatsFragment = ChatsFragment()
         val contactsFragment = ContactsFragment()
         val profileFragment = ProfileFragment()
 
@@ -33,7 +34,7 @@ class ChatsActivity : BaseActivity() {
         //SET DEFAULT FRAGMENT
         //APPLY FRAGMENT TO FRAME
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fl_fragment, chatsFragment)
+            replace(R.id.fl_fragment, contactsFragment)
             commit()
         }
 
@@ -59,15 +60,23 @@ class ChatsActivity : BaseActivity() {
             }
         }
 
-        // ON CHATS CLICK
-        val ib_chats = findViewById<ImageButton>(R.id.ib_chats)
-        ib_chats.setOnClickListener {
-            //APPLY CHATS FRAGMENT TO FRAME
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fl_fragment, chatsFragment)
-                addToBackStack(null)
-                commit()
-            }
+//        // ON CHATS CLICK
+//        val ib_chats = findViewById<ImageButton>(R.id.ib_chats)
+//        ib_chats.setOnClickListener {
+//            //APPLY CHATS FRAGMENT TO FRAME
+//            supportFragmentManager.beginTransaction().apply {
+//                replace(R.id.fl_fragment, chatsFragment)
+//                addToBackStack(null)
+//                commit()
+//            }
+//        }
+
+        // ON LOGOUT CLICK
+        ib_logout.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
 //
@@ -90,11 +99,6 @@ class ChatsActivity : BaseActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    fun openChat() {
-        val intent = Intent(this, MessageActivity::class.java)
-
     }
 
 
