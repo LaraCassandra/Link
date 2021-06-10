@@ -92,6 +92,7 @@ class RegisterActivity : BaseActivity() {
 
                                     // ADD TO FIRESTORE
                                     Firestore.registerUser(this, user)
+                                    notificationManager.notify(NOTIFICATION_ID, registerNotification)
                                 }
                                 else {
                                     showErrorSnackBar(task.exception!!.message.toString(), true)
@@ -105,7 +106,6 @@ class RegisterActivity : BaseActivity() {
         val register_btn = findViewById<Button>(R.id.btn_register)
         register_btn.setOnClickListener {
             registerUser()
-            notificationManager.notify(NOTIFICATION_ID, registerNotification)
         }
     }
 
