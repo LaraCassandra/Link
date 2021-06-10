@@ -41,8 +41,18 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
+<!--        <ImageButton-->
+<!--            android:id="@+id/ib_chats"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/Navy"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="10dp"-->
+<!--            android:src="@drawable/ic_baseline_chat_24" />-->
+
         <ImageButton
-            android:id="@+id/ib_chats"
+            android:id="@+id/ib_contacts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -61,15 +71,6 @@
             android:padding="10dp"
             android:src="@drawable/ic_baseline_person_24" />
 
-        <ImageButton
-            android:id="@+id/ib_contacts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/Navy"
-            android:gravity="center"
-            android:padding="10dp"
-            android:src="@drawable/ic_baseline_contacts_24" />
 
     </LinearLayout>
 
