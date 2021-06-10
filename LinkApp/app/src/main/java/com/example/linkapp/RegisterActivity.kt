@@ -29,7 +29,7 @@ class RegisterActivity : BaseActivity() {
 
             // VARIABLES
             val email: String = findViewById<EditText>(R.id.et_email).text.toString().trim{ it <= ' '}
-            val name: String = findViewById<EditText>(R.id.et_name).text.toString().trim{ it <= ' '}
+            val displayName: String = findViewById<EditText>(R.id.et_name).text.toString().trim{ it <= ' '}
             val password: String = findViewById<EditText>(R.id.et_password).text.toString().trim{ it <= ' '}
 
             // VALIDATION
@@ -47,7 +47,7 @@ class RegisterActivity : BaseActivity() {
                                     // CREATE USER DATA
                                     val user = User(
                                         firebaseUser.uid,
-                                        name,
+                                        displayName,
                                         email
                                     )
 

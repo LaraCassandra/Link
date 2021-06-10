@@ -4,15 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.ImageButton
 import com.example.linkapp.fragments.ChatsFragment
 import com.example.linkapp.fragments.ContactsFragment
 import com.example.linkapp.fragments.ProfileFragment
+import com.example.linkapp.model.User
 import com.example.linkapp.utils.Constants
 import com.example.linkapp.utils.Firestore
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.fragment_profile.*
 
-class ChatsActivity : AppCompatActivity() {
+class ChatsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +78,6 @@ class ChatsActivity : AppCompatActivity() {
         }
         else {
             startActivity(Intent(this, LoginActivity::class.java))
-
             finish()
         }
     }
@@ -88,5 +91,11 @@ class ChatsActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    fun openChat() {
+        val intent = Intent(this, MessageActivity::class.java)
+
+    }
+
 
 }

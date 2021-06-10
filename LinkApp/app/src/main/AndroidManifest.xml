@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LinkApp">
-        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".MessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ChatsActivity"/>
+        </activity>
         <activity android:name=".BaseActivity" />
         <activity
             android:name=".OnboardingActivity"
