@@ -153,14 +153,14 @@ https://github.com/LaraCassandra/Link.git
 
 ### Profiles
 When signing up to link, your profile is automatically created with only the bare neccessities and the ability to change your details at any point.
-<img src="images/feature1.jpg" alt="Feature One">
+<img src="Images/feature1.jpg" alt="Feature One">
 
 <br>
 <br>
 
 ### Messaging
 All of your contacts are reachable in one place, this minimalistic design helps your focus on what you really want - to link up with your friends.
-<img src="images/feature2.jpg" alt="Feature Two">
+<img src="Images/feature2.jpg" alt="Feature Two">
 
 <br>
 <br>
@@ -181,22 +181,22 @@ The ideation phase begins with different tasks to get a good idea of what the ap
 ### Wireframes
 
 
-<img src="images/wireframe1.jpg" alt="Wireframes">
-<img src="images/wireframe2.jpg" alt="Wireframes">
+<img src="Images/wireframe1.jpg" alt="Wireframes">
+<img src="Images/wireframe2.jpg" alt="Wireframes">
 
 <br>
 <br>
 
 ### Userflow
 
-<img src="images/userflow.jpg" alt="Userflow">
+<img src="Images/userflow.jpg" alt="Userflow">
 
 <br>
 <br>
 
 ### Entity Relationship Diagram
 
-<img src="images/entity.JPEG" alt="erd">
+<img src="Images/entity.JPEG" alt="erd">
 
 <br>
 <br>
