@@ -75,7 +75,6 @@
         <li><a href="#feedback">Feedback</a></li>
         <li><a href="#future-changes">Future Changes</a></li>
       </ul></li>
-    <li><a href="#demonstration-video">Demonstration Video</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Road Map</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -231,11 +230,6 @@ In week 7, we were able to get **valuable** feedback from our lecturer and peers
 
 <br>
 
-## Video Demonstration
-
-[Download Demo](https://github.com/LaraCassandra/QuizBee/blob/main/images/LaraCook_190218_Android302_Demo.mp4)
-
-<br>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
