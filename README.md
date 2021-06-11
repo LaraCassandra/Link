@@ -29,7 +29,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/LaraCassandra/Link">
-    <img src="images/logo.svg" alt="Logo" width="80" height="80">
+    <img src="Images/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Link</h3>
@@ -195,7 +195,7 @@ The ideation phase begins with different tasks to get a good idea of what the ap
 
 ### Entity Relationship Diagram
 
-<img src="Images/entity.JPEG" alt="erd">
+<img src="Images/entity.jpeg" alt="erd">
 
 <br>
 <br>
